@@ -2,8 +2,8 @@ body {
   background: #cfcfff;
   background: linear-gradient(
     90deg,
-    rgba(207, 207, 255, 1) 0%,
-    rgba(255, 251, 181, 1) 100%
+    rgba(216, 207, 255, 0.768) 0%,
+    rgba(255, 251, 181, 0.789) 100%
   );
 }
 
