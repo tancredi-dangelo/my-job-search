@@ -4,6 +4,8 @@ import Job from "./Job";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
+import { handleFavoriteCompany } from "../redux/actions/index.js";
+
 const CompanySearchResults = () => {
   const [jobs, setJobs] = useState([]);
   const params = useParams();
@@ -49,12 +51,7 @@ const CompanySearchResults = () => {
               className={isFavorite ? "btn btn-danger" : "btn btn-success"}
               style={{ height: "50%" }}
               onClick={() => {
-                dispatch({
-                  type: isFavorite
-                    ? "REMOVE_FAVORITE_COMPANY"
-                    : "ADD_FAVORITE_COMPANY",
-                  payload: params.company,
-                });
+                dispatch(handleFavoriteCompany(isFavorite, params.company));
               }}
             >
               {isFavorite

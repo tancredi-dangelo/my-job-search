@@ -1,6 +1,7 @@
 import { Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { handleFavoriteJob } from "../redux/actions/index.js";
 
 const Job = ({ data }) => {
   const isFavorite = useSelector((state) =>
@@ -12,7 +13,7 @@ const Job = ({ data }) => {
     <Row
       className="mx-0 mt-3 p-4 glass"
       style={{
-        border: "1px solid #00000033",
+        border: "none",
         borderRadius: "12px",
       }}
     >
@@ -39,10 +40,7 @@ const Job = ({ data }) => {
       <Col xs={3} className="d-flex align-items-center justify-content-end">
         <Button
           onClick={() => {
-            dispatch({
-              type: isFavorite ? "REMOVE_FAVORITE_JOB" : "ADD_FAVORITE_JOB",
-              payload: isFavorite ? data._id : data,
-            });
+            dispatch(handleFavoriteJob(isFavorite, data));
           }}
           className={isFavorite ? "btn btn-danger" : "btn btn-success"}
         >
